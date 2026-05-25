@@ -178,28 +178,43 @@
   .thesis-meta-row .cell { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.6; }
   .thesis-meta-row .cell strong { display: block; font-family: 'Inter', sans-serif; font-size: 20px; color: var(--text); letter-spacing: -0.015em; margin-bottom: 8px; text-transform: none; font-weight: 500; }
 
-  /* WORK */
-  .work { padding: 180px 0; position: relative; }
-  .work::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(60% 50% at 100% 0%, rgba(255, 91, 46, 0.04) 0%, transparent 70%); }
-  .work-head { margin-bottom: 80px; max-width: 980px; }
-  .work-tiers { display: grid; gap: 80px; }
-  .work-tier-name { display: flex; align-items: baseline; gap: 18px; margin-bottom: 28px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--text-3); text-transform: uppercase; }
-  .work-tier-name .num { color: var(--accent); font-size: 11px; }
-  .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .work-grid.single { grid-template-columns: 1fr; }
-  .work-card { position: relative; padding: 36px; background: linear-gradient(180deg, var(--surface) 0%, rgba(14,14,20,0.4) 100%); border: 1px solid var(--line); border-radius: 18px; transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), border-color 280ms, background 280ms; overflow: hidden; isolation: isolate; min-height: 280px; display: flex; flex-direction: column; justify-content: space-between; }
-  .work-card::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(400px circle at var(--cmx, 50%) var(--cmy, 50%), rgba(255, 91, 46, 0.10), transparent 50%); opacity: 0; transition: opacity 320ms; }
-  .work-card:hover { border-color: var(--line-2); transform: translateY(-2px); }
-  .work-card:hover::before { opacity: 1; }
-  .work-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
-  .work-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-3); letter-spacing: 0.16em; }
-  .work-glyph { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--text-3); transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1); }
-  .work-card:hover .work-glyph { border-color: var(--accent); color: var(--accent); transform: rotate(-45deg); }
-  .work-name { font-size: 30px; font-weight: 500; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 16px; color: var(--text); }
-  .work-name .tm { font-size: 12px; vertical-align: super; color: var(--text-3); margin-left: 2px; }
-  .work-desc { font-size: 15px; color: var(--text-2); line-height: 1.55; margin-bottom: 28px; flex: 1; }
-  .work-foot { display: flex; justify-content: space-between; align-items: baseline; padding-top: 24px; border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: var(--text-3); text-transform: uppercase; }
-  .work-foot .duration { color: var(--text-2); }
+  /* WORK — editorial ledger style */
+  .work { padding: 180px 0 200px; position: relative; overflow: hidden; }
+  .work::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(50% 40% at 90% 10%, rgba(255, 91, 46, 0.05) 0%, transparent 70%); }
+  .work-intro { margin-bottom: 96px; max-width: 1100px; }
+  .work-intro .section-headline { margin-top: 36px; margin-bottom: 56px; }
+  .work-head { max-width: 1100px; display: grid; grid-template-columns: 1fr; gap: 28px; }
+  .work-head .principle { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 14px; }
+  .work-head .principle::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+  .work-head .lede { font-size: 19px; color: var(--text-2); max-width: 720px; line-height: 1.55; }
+  .work-head .lede strong { color: var(--text); font-weight: 500; }
+
+  .work-group { margin-top: 0; }
+  .work-group + .work-group { margin-top: 120px; }
+  .work-group-head { display: grid; grid-template-columns: 220px 1fr; align-items: baseline; gap: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--line-2); margin-bottom: 0; }
+  .work-group-head .ix { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--text-3); text-transform: uppercase; }
+  .work-group-head .who { font-size: 17px; color: var(--text-2); letter-spacing: -0.005em; }
+  .work-group-head .who strong { color: var(--text); font-weight: 500; }
+
+  .work-entry { display: grid; grid-template-columns: 220px 1fr; gap: 40px; padding: 56px 0; border-bottom: 1px solid var(--line); position: relative; transition: background 320ms; }
+  .work-entry:hover { background: rgba(255,255,255,0.01); }
+  .work-entry::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, var(--accent) 0%, transparent 30%); opacity: 0; transition: opacity 320ms; }
+  .work-entry:hover::after { opacity: 0.4; }
+  .work-entry .numeral { font-size: 96px; font-weight: 500; letter-spacing: -0.05em; line-height: 0.85; color: var(--text); font-feature-settings: "tnum"; align-self: flex-start; position: relative; }
+  .work-entry .numeral .slash { color: var(--accent); font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; font-size: 0.6em; vertical-align: super; margin-left: 4px; letter-spacing: 0; }
+  .work-entry .body { display: flex; flex-direction: column; gap: 28px; max-width: 720px; }
+  .work-entry .row-top { display: flex; align-items: baseline; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  .work-entry .name { font-size: 36px; font-weight: 500; letter-spacing: -0.028em; line-height: 1.05; color: var(--text); }
+  .work-entry .name .tm { font-size: 13px; vertical-align: super; color: var(--text-3); margin-left: 3px; font-weight: 400; }
+  .work-entry .duration { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--accent); text-transform: uppercase; white-space: nowrap; }
+  .work-entry .desc { font-size: 17px; color: var(--text-2); line-height: 1.55; }
+  .work-entry .desc em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--text); font-size: 1.05em; }
+  .work-entry .keeps { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding-top: 24px; border-top: 1px dashed var(--line-2); }
+  .work-entry .keeps .label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--accent); text-transform: uppercase; line-height: 1.6; }
+  .work-entry .keeps .list { font-size: 14px; color: var(--text-2); line-height: 1.6; }
+  .work-entry .keeps .list strong { color: var(--text); font-weight: 500; }
+
+  .work-watermark { position: absolute; right: -40px; top: 50%; transform: translateY(-50%); font-family: 'Inter', sans-serif; font-weight: 700; font-size: clamp(180px, 22vw, 320px); letter-spacing: -0.06em; color: rgba(255,255,255,0.015); pointer-events: none; user-select: none; line-height: 0.8; white-space: nowrap; z-index: -1; }
 
   /* ENGAGE */
   .engage { padding: 200px 0 160px; text-align: center; position: relative; overflow: hidden; }
@@ -233,11 +248,29 @@
     .hero h1 { font-size: 56px; }
     .index-head { grid-template-columns: 1fr; }
     .index-head .right { text-align: left; }
-    .index-board { padding: 28px; border-radius: 16px; }
-    .composite-score { font-size: 52px; }
-    .board-grid { grid-template-columns: 1fr; }
-    .work-grid, .work-grid.single { grid-template-columns: 1fr; }
-    .thesis-meta-row { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .index-board { padding: 24px 20px; border-radius: 12px; }
+    .board-top { grid-template-columns: 1fr; gap: 24px; padding-bottom: 24px; margin-bottom: 24px; }
+    .board-title-row { flex-wrap: wrap; gap: 12px; }
+    .composite-score { font-size: 56px; }
+    .board-grid { grid-template-columns: 1fr; border-radius: 8px; }
+    .dim-cell { padding: 20px 18px; }
+    .board-footer { flex-direction: column; align-items: flex-start; gap: 12px; padding-top: 20px; margin-top: 24px; }
+
+    /* WORK section — mobile */
+    .work { padding: 100px 0 120px; }
+    .work-head { margin-bottom: 64px; }
+    .work-group + .work-group { margin-top: 80px; }
+    .work-group-head { grid-template-columns: 1fr; gap: 12px; padding-bottom: 20px; }
+    .work-entry { grid-template-columns: 1fr; gap: 24px; padding: 36px 0; }
+    .work-entry .numeral { font-size: 56px; }
+    .work-entry .row-top { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .work-entry .name { font-size: 28px; }
+    .work-entry .desc { font-size: 16px; }
+    .work-entry .keeps { grid-template-columns: 1fr; gap: 8px; }
+    .work-watermark { display: none; }
+
+    .thesis { padding: 120px 0; }
+    .thesis-meta-row { grid-template-columns: 1fr; gap: 20px; padding-top: 40px; margin-top: 40px; }
     .footer-row { grid-template-columns: 1fr 1fr; gap: 40px; }
   }
 </style>
@@ -260,6 +293,7 @@
       <a href="#work">Work</a>
       <a href="#thesis">Thesis</a>
       <a href="#index">Index</a>
+      <a href="/score">Score</a>
       <a href="#engage" class="nav-cta">Brief us <span>↗</span></a>
     </div>
   </div>
@@ -369,6 +403,11 @@
         <div>ANNUAL PUBLICATION FORTHCOMING</div>
       </div>
     </div>
+
+    <div class="reveal" style="margin-top: 48px; text-align: center;">
+      <a href="/score" class="hero-cta">Find your first move <span class="arr">→</span></a>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--text-3); text-transform: uppercase; margin-top: 18px;">9 QUESTIONS · 3 MIN · TAILORED PATH FORWARD</div>
+    </div>
   </div>
 </section>
 
@@ -399,93 +438,72 @@
 
 <section class="work" id="work">
   <div class="container">
-    <div class="work-head reveal">
+    <div class="work-intro reveal">
       <div class="eyebrow"><span class="e-bar"></span> THE WORK · 03</div>
-      <h2 class="section-headline">Seven engagements. <span class="it">One relationship.</span></h2>
-      <p style="font-size:19px; color:var(--text-2); max-width:680px; margin-top:32px; line-height:1.55;">Each designed for a specific decision on a specific desk. The relationship is with the CEO — investors introduce, sponsors underwrite, the deliverable goes to the operator running the company.</p>
+      <h2 class="section-headline">Three engagements. <span class="it">Built to be left behind.</span></h2>
+      <div class="work-head">
+        <div class="principle">A Firm Discipline · Not A Services Menu</div>
+        <p class="lede">Every engagement ends with assets your team owns and operates — frameworks, architectures, rubrics, the motion itself. <strong>We don't run your GTM. We make sure you can.</strong></p>
+      </div>
     </div>
 
-    <div class="work-tiers">
-      <div class="reveal">
-        <div class="work-tier-name"><span class="num">00</span> ENTRY POINT</div>
-        <div class="work-grid single">
-          <a class="work-card" href="#" data-card>
-            <div>
-              <div class="work-card-top">
-                <span class="work-num">000</span>
-                <div class="work-glyph">→</div>
-              </div>
-              <h3 class="work-name">The Board Session<span class="tm">™</span></h3>
-              <p class="work-desc">A compressed 1–2 day engagement for CEOs, boards, and investors. Framed around what changes in your revenue architecture under AI. Outputs: a written perspective, a calibrated Index read, and two or three flagged surfaces for deeper engagement. The way most relationships begin.</p>
-            </div>
-            <div class="work-foot"><span>CEOs · BOARDS · PE</span><span class="duration">1–2 DAYS</span></div>
-          </a>
+    <div class="work-watermark" aria-hidden="true">GTM</div>
+
+    <div class="work-group reveal">
+      <div class="work-group-head">
+        <span class="ix">PT. 01 · FOR CEOS</span>
+        <span class="who">The decision is yours. <strong>The work is yours afterward.</strong></span>
+      </div>
+
+      <div class="work-entry">
+        <div class="numeral">01<span class="slash">/</span></div>
+        <div class="body">
+          <div class="row-top">
+            <h3 class="name">The Read<span class="tm">™</span></h3>
+            <span class="duration">1 day → 4 weeks</span>
+          </div>
+          <p class="desc">A diagnostic. Starts as a board session for a fast read, scales to a full GTM tear-down for diligence-grade work, includes CRO calibration if you want it. You leave with a written perspective, a calibrated Index read of where you sit, and a recommended next move. <em>The document and rubric stay with you — your team can re-run the read in twelve months without us.</em></p>
+          <div class="keeps">
+            <div class="label">You Keep</div>
+            <div class="list"><strong>The written perspective.</strong> The Index scoring rubric. The CRO assessment framework. The recommended next move — yours to take with us, with someone else, or in-house.</div>
+          </div>
         </div>
       </div>
 
-      <div class="reveal">
-        <div class="work-tier-name"><span class="num">01</span> DILIGENCE</div>
-        <div class="work-grid">
-          <a class="work-card" href="#" data-card>
-            <div>
-              <div class="work-card-top"><span class="work-num">001</span><div class="work-glyph">→</div></div>
-              <h3 class="work-name">GTM Tear-down<span class="tm">™</span></h3>
-              <p class="work-desc">A diligence-grade read of a company's revenue architecture. Quantified findings on motion fitness, pipeline integrity, attribution validity, and agent substitution exposure.</p>
-            </div>
-            <div class="work-foot"><span>CEOs · BOARDS</span><span class="duration">3–4 WEEKS</span></div>
-          </a>
-          <a class="work-card" href="#" data-card>
-            <div>
-              <div class="work-card-top"><span class="work-num">002</span><div class="work-glyph">→</div></div>
-              <h3 class="work-name">CRO Calibration<span class="tm">™</span></h3>
-              <p class="work-desc">Independent assessment of incumbent revenue leadership against the AI-era job spec — not the 2019 one. Includes a specific test of agent-layer fluency.</p>
-            </div>
-            <div class="work-foot"><span>CEOs · BOARDS</span><span class="duration">2–3 WEEKS</span></div>
-          </a>
+      <div class="work-entry">
+        <div class="numeral">02<span class="slash">/</span></div>
+        <div class="body">
+          <div class="row-top">
+            <h3 class="name">The Reset<span class="tm">™</span></h3>
+            <span class="duration">100 days · opt. 6–12 mo handover</span>
+          </div>
+          <p class="desc">A 100-day redesign. New architecture, redesigned motion, the agent operating layer designed in, rebuilt operating cadence. Built with the operating team so they can run it. <em>At day 101 your team owns the motion, the cadence, and the decision rights.</em> If you need a senior network operator on the inside to ship the agent layer through to handover, we can place one for 6–12 months — engagement ends on a handover gate, not a renewal.</p>
+          <div class="keeps">
+            <div class="label">You Keep</div>
+            <div class="list"><strong>The new motion.</strong> The agent operating architecture. The supervision model. The operating manual. The hired agent operators (on your payroll, not ours).</div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="reveal">
-        <div class="work-tier-name"><span class="num">02</span> ARCHITECTURE &nbsp;&middot;&nbsp; REDESIGN</div>
-        <div class="work-grid">
-          <a class="work-card" href="#" data-card>
-            <div>
-              <div class="work-card-top"><span class="work-num">003</span><div class="work-glyph">→</div></div>
-              <h3 class="work-name">Agent Operating Layer<span class="tm">™</span></h3>
-              <p class="work-desc">The new tier below the CRO. We design the human-and-agent architecture — what agents own, what humans supervise, supervision ratios, role specs, and the 12-month build plan.</p>
-            </div>
-            <div class="work-foot"><span>CEOs · CROs</span><span class="duration">6 WEEKS</span></div>
-          </a>
-          <a class="work-card" href="#" data-card>
-            <div>
-              <div class="work-card-top"><span class="work-num">004</span><div class="work-glyph">→</div></div>
-              <h3 class="work-name">The Reset<span class="tm">™</span></h3>
-              <p class="work-desc">A 100-day redesign. New architecture, redesigned motion, agent operating layer designed in, rebuilt operating cadence. Built with the operating team, not at them.</p>
-            </div>
-            <div class="work-foot"><span>CEOs</span><span class="duration">100 DAYS</span></div>
-          </a>
-        </div>
+    <div class="work-group reveal">
+      <div class="work-group-head">
+        <span class="ix">PT. 02 · FOR PE &amp; GROWTH FUNDS</span>
+        <span class="who">A productized read of the book. <strong>Becomes part of how you underwrite.</strong></span>
       </div>
 
-      <div class="reveal">
-        <div class="work-tier-name"><span class="num">03</span> EXECUTION &nbsp;&middot;&nbsp; PORTFOLIO</div>
-        <div class="work-grid">
-          <a class="work-card" href="#" data-card>
-            <div>
-              <div class="work-card-top"><span class="work-num">005</span><div class="work-glyph">→</div></div>
-              <h3 class="work-name">The Embedded Operator<span class="tm">™</span></h3>
-              <p class="work-desc">A senior network operator placed inside the company for 6–12 months to build the agent operating layer — hire the agent operators, ship the supervision model, calibrate the agents, hand over.</p>
-            </div>
-            <div class="work-foot"><span>CEOs · CROs</span><span class="duration">6–12 MONTHS</span></div>
-          </a>
-          <a class="work-card" href="#" data-card>
-            <div>
-              <div class="work-card-top"><span class="work-num">006</span><div class="work-glyph">→</div></div>
-              <h3 class="work-name">The Portfolio Read<span class="tm">™</span></h3>
-              <p class="work-desc">Cross-portfolio engagement priced for funds. Scores 12–40 portcos against the Index, surfaces talent and motion risk across the book, feeds the next IR cycle and underwriting model.</p>
-            </div>
-            <div class="work-foot"><span>PE · GROWTH FUNDS</span><span class="duration">8 WEEKS</span></div>
-          </a>
+      <div class="work-entry">
+        <div class="numeral">03<span class="slash">/</span></div>
+        <div class="body">
+          <div class="row-top">
+            <h3 class="name">The Portfolio Read<span class="tm">™</span></h3>
+            <span class="duration">8 weeks</span>
+          </div>
+          <p class="desc">Cross-portfolio engagement priced for funds. Scores 12–40 portcos against the Index, surfaces talent and motion risk across the book. <em>The scoring framework and underwriting inputs become a permanent part of how the fund reads its book — not a one-time deliverable.</em></p>
+          <div class="keeps">
+            <div class="label">You Keep</div>
+            <div class="list"><strong>The portfolio scorecard.</strong> The Index methodology. The underwriting inputs. The talent and motion risk register — re-runnable each IR cycle.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -524,12 +542,10 @@
       </div>
       <div class="footer-col">
         <h4>Work</h4>
-        <a href="#">GTM Tear-down</a>
-        <a href="#">CRO Calibration</a>
-        <a href="#">Agent Operating Layer</a>
-        <a href="#">The Reset</a>
-        <a href="#">Embedded Operator</a>
-        <a href="#">Portfolio Read</a>
+        <a href="#work">The Read</a>
+        <a href="#work">The Reset</a>
+        <a href="#work">The Portfolio Read</a>
+        <a href="/score">Readiness Score</a>
       </div>
       <div class="footer-col">
         <h4>Firm</h4>
